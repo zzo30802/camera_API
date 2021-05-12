@@ -1,0 +1,64 @@
+#ifndef ATTRIBUTE_H_
+#define ATTRIBUTE_H_
+namespace Cam {
+
+enum class AttributeInt {
+  WIDTH = 0,
+  HEIGHT,
+  MIN_WIDTH,
+  MIN_HEIGHT,
+  MAX_WIDTH,
+  MAX_HEIGHT,
+  X0,
+  Y0,
+  CUR_MASTER_GAIN,
+  MAX_MASTER_GAIN,
+  AUTO_WHITE_BALANCE,
+  TRIGGER_MODE,
+  TRIGGER_DELAY,
+};
+
+enum class AttributeDouble {
+  CUR_FPS,
+  MIN_FPS,
+  MAX_FPS,
+  CUR_EXPOSURE,
+  MIN_EXPOSURE,
+  MAX_EXPOSURE,
+};
+
+enum class PixelFormat {
+  MONO8,
+  MONO16,
+  YUV,
+  YCbCr,
+  BGR5,
+  BGR565,
+  BGR8,
+  BGRA8,
+  BGRY8,
+  RGB8,
+  RGBA8,
+  RGBY8,
+  BAYERRG8,
+};
+
+enum class TriggerMode {
+  TRIGGER_OFF,
+  TRIGGER_HI_LO,
+  TRIGGER_LO_HI,
+  TRIGGER_SOFTWARE,
+};
+
+enum class FlashMode {
+  FLASH_OFF,
+  FLASH_TRIGGER_ACTIVE_LO,
+  FLASH_TRIGGER_ACTIVE_HI,
+  FLASH_CONSTANT_HIGH,
+  FLASH_CONSTANT_LOW,
+  FLASH_FREERUN_ACTIVE_LO,
+  FLASH_FREERUN_ACTIVE_HI,
+};
+
+};      // namespace Cam
+#endif  // ATTRIBUTE_H_
