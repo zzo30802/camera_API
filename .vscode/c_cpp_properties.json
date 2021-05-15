@@ -4,7 +4,8 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/**/include",
+                "${workspaceFolder}/include",
+                "D:\\thirdpartyforwindows\\Spinnaker\\include",
                 "D:\\thirdpartyforwindows\\opencv\\build\\include"
             ],
             "defines": [

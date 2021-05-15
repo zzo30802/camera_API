@@ -1,14 +1,14 @@
-#ifndef _FLIR_H_
-#define _FLIR_H_
+#ifndef _IDS_H_
+#define _IDS_H_
 #include "attribute.h"
 #include "cameras_creator.h"
 #include "opencv2/core/core.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
 
-class Flir : public CamInterface {
+class Ids : public CamInterface {
  public:
-  Flir();
-  ~Flir();
+  Ids();
+  ~Ids();
   std::vector<std::string> GetCameraVec();
   bool OpenCameraID(const int &cam_index) const;
   bool StartStreaming(const int &cam_index) const;
@@ -25,8 +25,8 @@ class Flir : public CamInterface {
   bool Trigger(const int &cam_index, Cam::TriggerMode mode) const;
 
  private:
-  class FlirPIMPL;
-  std::auto_ptr<FlirPIMPL> p_flir_pimpl;
+  class IdsPIMPL;
+  std::auto_ptr<IdsPIMPL> p_ids_pimpl;
 };
 
-#endif  // _FLIR_H_
+#endif  // _IDS_H_

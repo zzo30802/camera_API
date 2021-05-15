@@ -52,6 +52,15 @@
         "xstddef": "cpp",
         "xtr1common": "cpp",
         "xtree": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "deque": "cpp",
+        "iostream": "cpp",
+        "queue": "cpp",
+        "xthread": "cpp",
+        "atomic": "cpp",
+        "clocale": "cpp",
+        "optional": "cpp",
+        "shared_mutex": "cpp",
+        "string_view": "cpp"
     }
 }
