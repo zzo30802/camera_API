@@ -28,48 +28,50 @@
 class CamInterface {
  public:
   virtual std::vector<std::string> GetCameraVec() = 0;
-  virtual bool OpenCameraID(const int &cam_index) const = 0;
-  virtual bool StartStreaming(const int &cam_index) const = 0;
-  virtual bool StopStreaming(const int &cam_index) const = 0;
+  virtual bool OpenCameraID(const int &cam_index) = 0;
+  virtual bool StartStreaming(const int &cam_index) = 0;
+  virtual bool StopStreaming(const int &cam_index) = 0;
   virtual void CloseCamera(const int &cam_index) = 0;
   virtual int GetAttribute(const int &cam_index, Cam::AttributeInt para) = 0;
   virtual double GetAttribute(const int &cam_index, Cam::AttributeDouble para) = 0;
-  virtual bool SetAttribute(const int &cam_index, Cam::AttributeInt para, const int &value) const = 0;
-  virtual bool SetAttribute(const int &cam_index, Cam::AttributeDouble para, const double &value) const = 0;
+  virtual bool SetAttribute(const int &cam_index, Cam::AttributeInt para, const int &value) = 0;
+  virtual bool SetAttribute(const int &cam_index, Cam::AttributeDouble para, const double &value) = 0;
   virtual cv::Mat GetFrame(const int &cam_index) = 0;
-  virtual bool RestoreCameraSetting(const int &cam_index) const = 0;
-  virtual bool ReadSetting(const int &cam_inde, const int &save_index) const = 0;
-  virtual bool SaveSetting(const int &cam_index, const int &save_index) const = 0;
-  virtual bool Trigger(const int &cam_index, Cam::TriggerMode mode) const = 0;
+  virtual bool RestoreCameraSetting(const int &cam_index) = 0;
+  virtual bool ReadSetting(const int &cam_inde, const int &save_index) = 0;
+  virtual bool SaveSetting(const int &cam_index, const int &save_index) = 0;
+  virtual bool Trigger(const int &cam_index, Cam::TriggerMode mode) = 0;
 };
 
 class CameraCreator : public CamInterface {
  public:
 #ifdef _WIN32
-  // common
+  //-----common-----
   CAMS_API CameraCreator();
   CAMS_API ~CameraCreator();
   CAMS_API virtual std::vector<std::string> GetCameraVec();
-  CAMS_API virtual bool OpenCameraID(const int &cam_index) const;
-  CAMS_API virtual bool StartStreaming(const int &cam_index) const;
-  CAMS_API virtual bool StopStreaming(const int &cam_index) const;
+  CAMS_API virtual bool OpenCameraID(const int &cam_index);
+  CAMS_API virtual bool StartStreaming(const int &cam_index);
+  CAMS_API virtual bool StopStreaming(const int &cam_index);
   CAMS_API virtual void CloseCamera(const int &cam_index);
   CAMS_API virtual int GetAttribute(const int &cam_index, Cam::AttributeInt para);
   CAMS_API virtual double GetAttribute(const int &cam_index, Cam::AttributeDouble para);
-  CAMS_API virtual bool SetAttribute(const int &cam_index, Cam::AttributeInt para, const int &value) const;
-  CAMS_API virtual bool SetAttribute(const int &cam_index, Cam::AttributeDouble para, const double &value) const;
+  CAMS_API virtual bool SetAttribute(const int &cam_index, Cam::AttributeInt para, const int &value);
+  CAMS_API virtual bool SetAttribute(const int &cam_index, Cam::AttributeDouble para, const double &value);
   CAMS_API virtual cv::Mat GetFrame(const int &cam_index);
-  CAMS_API virtual bool RestoreCameraSetting(const int &cam_index) const;
-  CAMS_API virtual bool ReadSetting(const int &cam_inde, const int &save_index) const;
-  CAMS_API virtual bool SaveSetting(const int &cam_index, const int &save_index) const;
-  CAMS_API virtual bool Trigger(const int &cam_index, Cam::TriggerMode mode) const;
+  CAMS_API virtual bool RestoreCameraSetting(const int &cam_index);
+  CAMS_API virtual bool ReadSetting(const int &cam_inde, const int &save_index);
+  CAMS_API virtual bool SaveSetting(const int &cam_index, const int &save_index);
+  CAMS_API virtual bool Trigger(const int &cam_index, Cam::TriggerMode mode);
 
-  // others
-  CAMS_API virtual std::vector<std::string> GetCameraList();
-  CAMS_API virtual CameraBrand GetCameraBrand(const int &camIndex);
+  //-----others-----
+  // Return all camera models connected to the computer.
   CAMS_API virtual std::vector<std::string> GetAllCamList();
-  CAMS_API virtual bool CreateCamInstanceByVector(std::vector<int> cam_index_vector) const;
+  // Turn on the camera according to the received camera index(cam_index_vector).
+  CAMS_API virtual bool CreateCamInstanceByVector(std::vector<int> &cam_index_vector);
+  // Pass in the reordered camera index to operate the specified camera.
   CAMS_API virtual int SetCamPtr(const int &cam_index);
+  // Release all instances and pointers.
   CAMS_API virtual void Release();
 #else
   // common
